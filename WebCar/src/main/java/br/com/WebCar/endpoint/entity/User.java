@@ -1,11 +1,18 @@
 package br.com.WebCar.endpoint.entity;
 
-import javax.persistence.*;
 import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import br.com.WebCar.endpoint.dto.UserDTO;
 
 @Entity
 @Table(name = "tb_user")
-public class UserVO {
+public class User {
 
     @GeneratedValue
     @Id
@@ -74,7 +81,17 @@ public class UserVO {
     public void setInVehicle(Boolean inVehicle) {
         this.inVehicle = inVehicle;
     }
-
-    public UserVO() {
+    
+	public User() {
     }
+
+	public User(UserDTO userDTO) {
+        this.name = userDTO.getName();
+        this.dtBirth = userDTO.getDtBirth();
+        this.cpf = userDTO.getCpf();
+        this.status = userDTO.getStatus();
+        this.inVehicle = userDTO.getInVehicle();
+	}
+	
+	
 }

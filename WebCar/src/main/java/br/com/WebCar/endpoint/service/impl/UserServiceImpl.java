@@ -1,11 +1,16 @@
 package br.com.WebCar.endpoint.service.impl;
 
-import br.com.WebCar.endpoint.entity.UserVO;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.springframework.stereotype.Service;
+
+import br.com.WebCar.endpoint.dto.UserDTO;
+import br.com.WebCar.endpoint.entity.User;
 import br.com.WebCar.endpoint.repository.UserRepository;
 import br.com.WebCar.endpoint.service.UserService;
 
-import java.util.List;
-
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -14,23 +19,28 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
-    @Override
-    public UserVO addUser(UserVO user) {
-        return null;
+    public UserDTO addUser(UserDTO userDTO) {
+    	User user = userRepository.save(new User(userDTO));
+        return new UserDTO(user);
     }
 
-    @Override
-    public List<UserVO> listUser() {
-        return null;
+    public List<UserDTO> listUsers() {
+        return userRepository.findAll().stream().map(UserDTO::new).collect(Collectors.toList());
     }
 
-    @Override
-    public Boolean deleteUser(Long id) {
-        return null;
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 
-    @Override
-    public UserVO alterUser(UserVO user) {
-        return null;
-    }
+	public UserDTO alterUser(Long id, UserDTO user) {
+		User userAtualizar = userRepository.findById(id).get();
+		userAtualizar.setName(user.getName());
+		userAtualizar.setDtBirth(user.getDtBirth());
+		userAtualizar.setStatus(user.getStatus());
+		userAtualizar.setInVehicle(user.getInVehicle());
+		
+		userRepository.save(userAtualizar);
+		
+        return new UserDTO(userAtualizar);
+	}
 }

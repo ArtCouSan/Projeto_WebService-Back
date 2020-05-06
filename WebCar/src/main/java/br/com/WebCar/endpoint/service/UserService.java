@@ -1,14 +1,14 @@
 package br.com.WebCar.endpoint.service;
 
-import br.com.WebCar.endpoint.entity.UserVO;
-
 import java.util.List;
+
+import br.com.WebCar.endpoint.dto.UserDTO;
 
 public interface UserService {
 
-    public UserVO addUser(UserVO user);
-    public List<UserVO> listUser();
-    public Boolean deleteUser(Long id);
-    public UserVO alterUser(UserVO user);
+    public UserDTO addUser(UserDTO user);
+    public List<UserDTO> listUsers();
+    public void deleteUser(Long id);
+    public UserDTO alterUser(Long id, UserDTO user);
 
 }
