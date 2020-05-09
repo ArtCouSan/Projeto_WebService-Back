@@ -1,15 +1,18 @@
 package br.com.WebCar.endpoint.entity;
 
 import java.time.LocalDate;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-import br.com.WebCar.endpoint.dto.UserDTO;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@Data
+@Setter
+@Getter
 @Entity
 @Table(name = "tb_user")
 public class User {
@@ -34,64 +37,8 @@ public class User {
     @Column(name = "user_in_vehicle")
     private Boolean inVehicle;
 
-    public Long getId() {
-        return id;
-    }
+    @JsonManagedReference
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Trip> trips;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public LocalDate getDtBirth() {
-        return dtBirth;
-    }
-
-    public void setDtBirth(LocalDate dtBirth) {
-        this.dtBirth = dtBirth;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public Boolean getStatus() {
-        return status;
-    }
-
-    public void setStatus(Boolean status) {
-        this.status = status;
-    }
-
-    public Boolean getInVehicle() {
-        return inVehicle;
-    }
-
-    public void setInVehicle(Boolean inVehicle) {
-        this.inVehicle = inVehicle;
-    }
-    
-	public User() {
-    }
-
-	public User(UserDTO userDTO) {
-        this.name = userDTO.getName();
-        this.dtBirth = userDTO.getDtBirth();
-        this.cpf = userDTO.getCpf();
-        this.status = userDTO.getStatus();
-        this.inVehicle = userDTO.getInVehicle();
-	}
-	
-	
 }

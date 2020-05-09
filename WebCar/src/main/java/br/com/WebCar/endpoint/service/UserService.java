@@ -2,13 +2,15 @@ package br.com.WebCar.endpoint.service;
 
 import java.util.List;
 
-import br.com.WebCar.endpoint.dto.UserDTO;
+import br.com.WebCar.endpoint.dto.UserAlterDTO;
+import br.com.WebCar.endpoint.dto.UserResponseDTO;
+import br.com.WebCar.endpoint.dto.UserSaveDTO;
 
 public interface UserService {
 
-    public UserDTO addUser(UserDTO user);
-    public List<UserDTO> listUsers();
-    public void deleteUser(Long id);
-    public UserDTO alterUser(Long id, UserDTO user);
+    public UserResponseDTO createUser(UserSaveDTO user);
+    public List<UserResponseDTO> listUsers();
+    public UserResponseDTO deleteUser(Long id);
+    public UserResponseDTO alterUser(Long id, UserAlterDTO user);
 
 }
