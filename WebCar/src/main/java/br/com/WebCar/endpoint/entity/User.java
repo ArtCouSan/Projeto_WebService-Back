@@ -17,7 +17,7 @@ import lombok.Setter;
 @Table(name = "tb_user")
 public class User {
 
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name ="user_id")
     private Long id;
