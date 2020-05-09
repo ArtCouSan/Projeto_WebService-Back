@@ -1,6 +1,8 @@
 package br.com.WebCar.endpoint.dto;
 
 import br.com.WebCar.endpoint.entity.User;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -9,6 +11,8 @@ import java.time.LocalDate;
 public class UserAlterDTO {
 
     private String name;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    @ApiModelProperty(example = "dd-MM-yyyy")
     private LocalDate dtBirth;
     private String cpf;
     private Boolean status;
