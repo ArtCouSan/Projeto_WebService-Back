@@ -10,6 +10,7 @@ public interface UserService {
 
     public UserResponseDTO createUser(UserSaveDTO user);
     public List<UserResponseDTO> listUsers();
+    public UserResponseDTO findUser(Long id);
     public UserResponseDTO deleteUser(Long id);
     public UserResponseDTO alterUser(Long id, UserAlterDTO user);
 

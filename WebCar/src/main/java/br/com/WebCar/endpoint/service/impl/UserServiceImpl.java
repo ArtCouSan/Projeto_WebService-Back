@@ -33,6 +33,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll().stream().map(UserResponseDTO::new).collect(Collectors.toList());
     }
 
+    @Override
+    public UserResponseDTO findUser(Long id) {
+        User userFinded = userExist(id);
+        return new UserResponseDTO(userFinded);
+    }
+
     public UserResponseDTO deleteUser(Long id) {
         User userDelete = userExist(id);
         userDelete.setStatus(false);
