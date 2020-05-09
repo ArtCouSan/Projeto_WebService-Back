@@ -8,6 +8,7 @@ import java.time.LocalDate;
 @Data
 public class UserResponseDTO {
 
+    private Long id;
     private String name;
     private LocalDate dtBirth;
     private String cpf;
@@ -15,6 +16,7 @@ public class UserResponseDTO {
     private Boolean inVehicle;
 
     public UserResponseDTO(User user) {
+        this.id = user.getId();
         this.name = user.getName();
         this.dtBirth = user.getDtBirth();
         this.cpf = user.getCpf();

@@ -17,16 +17,6 @@ public class VehicleAlterDTO {
     public VehicleAlterDTO() {
     }
 
-    public VehicleAlterDTO(Vehicle vehicle) {
-        this.plate = vehicle.getPlate();
-        this.nick = vehicle.getNick();
-        this.model = vehicle.getModel();
-        this.year = vehicle.getYear();
-        this.color = vehicle.getColor();
-        this.status = vehicle.getStatus();
-        this.mileage = vehicle.getMileage();
-    }
-
     public Vehicle parseVehicleEntity() {
         Vehicle vehicle = new Vehicle();
         vehicle.setPlate(this.plate);
@@ -38,5 +28,7 @@ public class VehicleAlterDTO {
         vehicle.setMileage(this.mileage);
         return vehicle;
     }
+
+
 
 }

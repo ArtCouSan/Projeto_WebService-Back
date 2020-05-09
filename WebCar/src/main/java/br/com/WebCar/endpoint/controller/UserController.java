@@ -14,7 +14,7 @@ import br.com.WebCar.endpoint.service.UserService;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping(value = "user")
 public class UserController {
 
     private final UserService serviceUser;
@@ -34,12 +34,12 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> alterUser(@PathVariable("id") Long id, @RequestBody @Valid UserAlterDTO user) {
+    public ResponseEntity<UserResponseDTO> alterUser(@PathVariable Long id, @RequestBody UserAlterDTO user) {
         return new ResponseEntity<UserResponseDTO>(serviceUser.alterUser(id, user), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<UserResponseDTO> deleteUser(@PathVariable("id") Long id) {
+    public ResponseEntity<UserResponseDTO> deleteUser(@PathVariable Long id) {
         return new ResponseEntity<UserResponseDTO>(serviceUser.deleteUser(id), HttpStatus.OK);
     }
 

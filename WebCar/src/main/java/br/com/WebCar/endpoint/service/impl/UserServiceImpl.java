@@ -50,10 +50,10 @@ public class UserServiceImpl implements UserService {
 
     public UserResponseDTO alterUser(Long id, UserAlterDTO user) {
         User userUpdate = userExist(id);
-        userUpdate.setName(user.getName());
-        userUpdate.setDtBirth(user.getDtBirth());
-        userUpdate.setStatus(user.getStatus());
-        userUpdate.setInVehicle(user.getInVehicle());
+        userUpdate.setName(user.getName() != null ? user.getName() : userUpdate.getName());
+        userUpdate.setDtBirth(user.getDtBirth() != null ? user.getDtBirth() : userUpdate.getDtBirth());
+        userUpdate.setStatus(user.getStatus() != null ? user.getStatus() : userUpdate.getStatus());
+        userUpdate.setInVehicle(user.getInVehicle() != null ? user.getInVehicle() : userUpdate.getInVehicle());
 
         userRepository.save(userUpdate);
 

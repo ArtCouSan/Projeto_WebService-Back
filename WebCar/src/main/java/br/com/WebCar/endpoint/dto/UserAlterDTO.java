@@ -18,12 +18,7 @@ public class UserAlterDTO {
     private Boolean status;
     private Boolean inVehicle;
 
-    public UserAlterDTO(User user) {
-        this.name = user.getName();
-        this.dtBirth = user.getDtBirth();
-        this.cpf = user.getCpf();
-        this.status = user.getStatus();
-        this.inVehicle = user.getInVehicle();
+    public UserAlterDTO() {
     }
 
     public User parseUserEntity(){
