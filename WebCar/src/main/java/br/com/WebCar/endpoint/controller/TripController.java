@@ -3,6 +3,8 @@ package br.com.WebCar.endpoint.controller;
 import br.com.WebCar.endpoint.dto.TripConfirmDTO;
 import br.com.WebCar.endpoint.dto.TripDisponibilityConsultDTO;
 import br.com.WebCar.endpoint.dto.VehicleResponseDTO;
+import br.com.WebCar.endpoint.service.TripService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,16 +15,20 @@ import java.util.List;
 @RequestMapping("trip")
 public class TripController {
 
-    @GetMapping("/disponibility-consult")
-    public ResponseEntity<List<VehicleResponseDTO>> tripDisponibilityConsult(@RequestBody TripDisponibilityConsultDTO disponibilityConsultDTO) {
+    private final TripService tripService;
 
-        return null;
+    public TripController(TripService tripService) {
+        this.tripService = tripService;
+    }
+
+    @PostMapping("/disponibility-consult")
+    public ResponseEntity<List<VehicleResponseDTO>> tripDisponibilityConsult(@RequestBody TripDisponibilityConsultDTO disponibilityConsultDTO) {
+        return new ResponseEntity<List<VehicleResponseDTO>>(tripService.disponibilityConsult(disponibilityConsultDTO), HttpStatus.OK);
     }
 
     @PostMapping("/confirm")
     public ResponseEntity<String> tripConfirm(@RequestBody @Valid TripConfirmDTO tripConfirmDTO) {
-
-        return null;
+        return new ResponseEntity<String>(tripService.tripConfirm(tripConfirmDTO), HttpStatus.OK);
     }
 
 }

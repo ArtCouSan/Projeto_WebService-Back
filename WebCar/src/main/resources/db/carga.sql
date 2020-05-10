@@ -21,20 +21,20 @@ INSERT INTO tb_user
 INSERT INTO tb_vehicle
 (vehicle_plate, vehicle_nick, vehicle_model, vehicle_year, vehicle_color, vehicle_status, vehicle_mileage)
  VALUES
- ('KAN-2964','Carro de Mafioso', 'Oldsmobile Tornado', 1966, 'Preto', true, 666);
+ ('KAN-2964','Carro de Mafioso', 'Oldsmobile Tornado', 1966, 'Preto', 'DISPONIBLE', 666);
 
 INSERT INTO tb_vehicle
 (vehicle_plate, vehicle_nick, vehicle_model, vehicle_year, vehicle_color, vehicle_status, vehicle_mileage)
  VALUES
- ('NAD-6312','McFly', 'DeLorean DMC-12', 1980, 'Cinza', true, 666);
+ ('NAD-6312','McFly', 'DeLorean DMC-12', 1980, 'Cinza', 'DISPONIBLE', 666);
 
  INSERT INTO tb_vehicle
 (vehicle_plate, vehicle_nick, vehicle_model, vehicle_year, vehicle_color, vehicle_status, vehicle_mileage)
  VALUES
- ('NFB-0294','Cilada Bino', 'VW Titan Tractor 18.310', 2004, 'Preto', true, 666);
+ ('NFB-0294','Cilada Bino', 'VW Titan Tractor 18.310', 2004, 'Preto', 'DISPONIBLE', 666);
 
  INSERT INTO tb_vehicle
 (vehicle_plate, vehicle_nick, vehicle_model, vehicle_year, vehicle_color, vehicle_status, vehicle_mileage)
  VALUES
- ('MYU-8739','Winchester', 'Chevrolet Impala', 1967, 'Preto', true, 666);
+ ('MYU-8739','Winchester', 'Chevrolet Impala', 1967, 'Preto', 'DISPONIBLE', 666);
 

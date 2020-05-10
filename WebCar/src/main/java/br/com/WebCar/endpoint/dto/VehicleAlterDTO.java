@@ -1,6 +1,7 @@
 package br.com.WebCar.endpoint.dto;
 
 import br.com.WebCar.endpoint.entity.Vehicle;
+import br.com.WebCar.endpoint.enums.CarStep;
 import lombok.Data;
 
 @Data
@@ -11,7 +12,7 @@ public class VehicleAlterDTO {
     private String model;
     private Integer year;
     private String color;
-    private Boolean status;
+    private CarStep status;
     private Long mileage;
 
     public VehicleAlterDTO() {

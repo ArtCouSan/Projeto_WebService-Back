@@ -3,6 +3,8 @@ package br.com.WebCar.endpoint.entity;
 import javax.persistence.*;
 
 import br.com.WebCar.endpoint.dto.VehicleSaveDTO;
+import br.com.WebCar.endpoint.enums.CarStep;
+import br.com.WebCar.endpoint.enums.LocalType;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.Getter;
@@ -38,7 +40,8 @@ public class Vehicle {
 	private String color;
 
 	@Column(name = "vehicle_status")
-	private Boolean status;
+	@Enumerated(EnumType.STRING)
+	private CarStep status;
 
 	@Column(name = "vehicle_mileage")
 	private Long mileage;

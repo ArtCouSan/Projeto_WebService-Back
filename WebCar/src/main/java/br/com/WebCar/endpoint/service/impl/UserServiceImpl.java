@@ -3,6 +3,7 @@ package br.com.WebCar.endpoint.service.impl;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import br.com.WebCar.endpoint.dto.UserAlterDTO;
 import br.com.WebCar.endpoint.dto.UserResponseDTO;
@@ -24,13 +25,17 @@ public class UserServiceImpl implements UserService {
         this.userRepository = userRepository;
     }
 
+    @Override
     public UserResponseDTO createUser(UserSaveDTO userDTO) {
         User user = userRepository.save(userDTO.parseUserEntity());
         return new UserResponseDTO(user);
     }
 
+    @Override
     public List<UserResponseDTO> listUsers() {
-        return userRepository.findAll().stream().map(UserResponseDTO::new).collect(Collectors.toList());
+        return userRepository.findAll()
+                .stream()
+                .map(UserResponseDTO::new).collect(Collectors.toList());
     }
 
     @Override
@@ -39,6 +44,7 @@ public class UserServiceImpl implements UserService {
         return new UserResponseDTO(userFinded);
     }
 
+    @Override
     public UserResponseDTO deleteUser(Long id) {
         User userDelete = userExist(id);
         userDelete.setStatus(false);
@@ -48,6 +54,7 @@ public class UserServiceImpl implements UserService {
         return new UserResponseDTO(userDelete);
     }
 
+    @Override
     public UserResponseDTO alterUser(Long id, UserAlterDTO user) {
         User userUpdate = userExist(id);
         userUpdate.setName(user.getName() != null ? user.getName() : userUpdate.getName());
@@ -60,7 +67,8 @@ public class UserServiceImpl implements UserService {
         return new UserResponseDTO(userUpdate);
     }
 
-    private User userExist(Long id) {
+    @Override
+    public User userExist(Long id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isPresent()) {
             return user.get();

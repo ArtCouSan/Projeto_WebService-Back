@@ -3,10 +3,12 @@ package br.com.WebCar.endpoint.service.impl;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import br.com.WebCar.endpoint.dto.VehicleAlterDTO;
 import br.com.WebCar.endpoint.dto.VehicleResponseDTO;
 import br.com.WebCar.endpoint.entity.User;
+import br.com.WebCar.endpoint.enums.CarStep;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -25,43 +27,55 @@ public class VehicleServiceImpl implements VehicleService {
         this.vehicleRepository = vehicleRepository;
     }
 
+    @Override
     public List<VehicleResponseDTO> getAllVehicles() {
-        return vehicleRepository.findAll().stream().map(VehicleResponseDTO::new).collect(Collectors.toList());
+        return vehicleRepository.findAll().stream()
+                .map(VehicleResponseDTO::new)
+                .collect(Collectors.toList());
     }
 
+    @Override
     public VehicleResponseDTO findVehicleByPlate(String plate) {
         Vehicle vehicle = vehicleExist(null, plate);
 
         return new VehicleResponseDTO(vehicle);
     }
 
+    @Override
     public VehicleResponseDTO createVehicle(VehicleSaveDTO vehicleDTO) {
         Vehicle vehicle = vehicleRepository.save(vehicleDTO.parseVehicleEntity());
 
         return new VehicleResponseDTO(vehicle);
     }
 
+    @Override
     public VehicleResponseDTO alterVehicle(Long id, VehicleAlterDTO vehicleDTO) {
         Vehicle vehicle = vehicleExist(id, null);
-        vehicle.setNick(vehicleDTO.getNick());
-        vehicle.setMileage(vehicleDTO.getMileage());
+        vehicle.setNick(vehicleDTO.getNick() != null ? vehicleDTO.getNick() : vehicle.getNick());
+        vehicle.setMileage(vehicleDTO.getMileage() != null ? vehicleDTO.getMileage() : vehicle.getMileage());
+        vehicle.setPlate(vehicleDTO.getPlate() != null ? vehicleDTO.getPlate() : vehicle.getPlate());
+        vehicle.setModel(vehicleDTO.getModel() != null ? vehicleDTO.getModel() : vehicle.getModel());
+        vehicle.setYear(vehicleDTO.getYear() != null ? vehicleDTO.getYear() : vehicle.getYear());
+        vehicle.setColor(vehicleDTO.getColor() != null ? vehicleDTO.getColor() : vehicle.getColor());
+        vehicle.setStatus(vehicleDTO.getStatus() != null ? vehicleDTO.getStatus() : vehicle.getStatus());
 
         vehicleRepository.save(vehicle);
 
         return new VehicleResponseDTO(vehicle);
     }
 
+    @Override
     public VehicleResponseDTO deleteVehicle(Long id) {
         Vehicle vehicle = vehicleExist(id, null);
-        vehicle.setStatus(false);
+        vehicle.setStatus(CarStep.UNAVAILABLE);
 
         vehicleRepository.save(vehicle);
 
         return new VehicleResponseDTO(vehicle);
     }
 
-    private Vehicle vehicleExist(Long id, String plate) {
-
+    @Override
+    public Vehicle vehicleExist(Long id, String plate) {
         Optional<Vehicle> vehicle = null;
 
         if (Optional.of(id).isPresent()) {

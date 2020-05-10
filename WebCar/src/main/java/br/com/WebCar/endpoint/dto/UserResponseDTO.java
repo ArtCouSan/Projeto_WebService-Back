@@ -15,6 +15,9 @@ public class UserResponseDTO {
     private Boolean status;
     private Boolean inVehicle;
 
+    public UserResponseDTO() {
+    }
+
     public UserResponseDTO(User user) {
         this.id = user.getId();
         this.name = user.getName();

@@ -1,5 +1,6 @@
 package br.com.WebCar.endpoint.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -36,6 +37,9 @@ public class User {
 
     @Column(name = "user_in_vehicle")
     private Boolean inVehicle;
+
+    @Column(name = "user_balance")
+    private BigDecimal balance;
 
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
