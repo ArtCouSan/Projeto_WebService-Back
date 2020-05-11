@@ -2,6 +2,7 @@ package br.com.WebCar.endpoint.controller;
 
 import java.util.List;
 
+import br.com.WebCar.endpoint.dto.LoginDTO;
 import br.com.WebCar.endpoint.dto.UserAlterDTO;
 import br.com.WebCar.endpoint.dto.UserResponseDTO;
 import br.com.WebCar.endpoint.dto.UserSaveDTO;
@@ -46,6 +47,11 @@ public class UserController {
     @GetMapping
     public ResponseEntity<List<UserResponseDTO>> listUsers() {
         return new ResponseEntity<List<UserResponseDTO>>(serviceUser.listUsers(), HttpStatus.OK);
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Boolean> userLogin(@RequestBody LoginDTO login) {
+        return new ResponseEntity<Boolean>(serviceUser.userLogin(login), HttpStatus.OK);
     }
 
 }

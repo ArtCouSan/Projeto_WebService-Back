@@ -7,6 +7,7 @@ import lombok.Data;
 @Data
 public class VehicleResponseDTO {
 
+    private Long id;
     private String plate;
     private String nick;
     private String model;
@@ -19,6 +20,7 @@ public class VehicleResponseDTO {
     }
 
     public VehicleResponseDTO(Vehicle vehicle) {
+        this.id = vehicle.getId();
         this.plate = vehicle.getPlate();
         this.nick = vehicle.getNick();
         this.model = vehicle.getModel();

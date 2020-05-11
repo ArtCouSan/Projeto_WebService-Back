@@ -2,6 +2,7 @@ package br.com.WebCar.endpoint.service;
 
 import java.util.List;
 
+import br.com.WebCar.endpoint.dto.LoginDTO;
 import br.com.WebCar.endpoint.dto.UserAlterDTO;
 import br.com.WebCar.endpoint.dto.UserResponseDTO;
 import br.com.WebCar.endpoint.dto.UserSaveDTO;
@@ -15,5 +16,6 @@ public interface UserService {
     public UserResponseDTO deleteUser(Long id);
     public UserResponseDTO alterUser(Long id, UserAlterDTO user);
     public User userExist(Long id);
+    public Boolean userLogin(LoginDTO loginDTO);
 
 }

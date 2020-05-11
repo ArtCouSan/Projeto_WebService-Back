@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import br.com.WebCar.endpoint.dto.LoginDTO;
 import br.com.WebCar.endpoint.dto.UserAlterDTO;
 import br.com.WebCar.endpoint.dto.UserResponseDTO;
 import org.springframework.http.HttpStatus;
@@ -78,6 +79,16 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new ResponseStatusException(
                     HttpStatus.NOT_FOUND, "User not found with id: ".concat(id.toString()));
+        }
+    }
+
+    @Override
+    public Boolean userLogin(LoginDTO loginDTO) {
+        Optional<User> user = this.userRepository.findByCpfAndPassword(loginDTO.getCpf(), loginDTO.getPassword());
+        if (user.isPresent()) {
+            return true;
+        } else {
+            return false;
         }
     }
 
