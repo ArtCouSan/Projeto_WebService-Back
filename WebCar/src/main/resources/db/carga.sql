@@ -16,7 +16,7 @@ INSERT INTO tb_user
 INSERT INTO tb_user
 (user_name, user_birth, user_cpf, user_status, user_in_vehicle, user_password)
  VALUES
- ('Eric','1988-10-02', '000.000.000-04', true, 'pastel');
+ ('Eric','1988-10-02', '000.000.000-04', true, false,'pastel');
 
 INSERT INTO tb_vehicle
 (vehicle_plate, vehicle_nick, vehicle_model, vehicle_year, vehicle_color, vehicle_status, vehicle_mileage)
