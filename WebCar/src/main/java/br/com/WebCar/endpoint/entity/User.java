@@ -41,6 +41,9 @@ public class User {
     @Column(name = "user_balance")
     private BigDecimal balance;
 
+    @Column(name = "user_password")
+    private String password;
+
     @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "user", fetch = FetchType.LAZY)
     private List<Trip> trips;

@@ -27,7 +27,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponseDTO createUser(UserSaveDTO userDTO) {
-        User user = userRepository.save(userDTO.parseUserEntity());
+        User user = userDTO.parseUserEntity();
+        user.setInVehicle(false);
+        user.setStatus(true);
+        userRepository.save(user);
         return new UserResponseDTO(user);
     }
 

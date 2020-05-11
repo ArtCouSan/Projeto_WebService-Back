@@ -16,17 +16,15 @@ public class UserSaveDTO {
     @ApiModelProperty(example = "dd-MM-yyyy")
     private LocalDate dtBirth;
 	private String cpf;
-	private Boolean status;
-	private Boolean inVehicle;
-	
+	private String password;
+
     public UserSaveDTO(){}
 
     public UserSaveDTO(User user) {
         this.name = user.getName();
         this.dtBirth = user.getDtBirth();
         this.cpf = user.getCpf();
-        this.status = user.getStatus();
-        this.inVehicle = user.getInVehicle();
+        this.password = user.getPassword();
     }
 
     public User parseUserEntity(){
@@ -34,8 +32,7 @@ public class UserSaveDTO {
         user.setName(this.name);
         user.setDtBirth(this.dtBirth);
         user.setCpf(this.cpf);
-        user.setStatus(this.status);
-        user.setInVehicle(this.inVehicle);
+        user.setPassword(this.password);
         return user;
     }
 	
