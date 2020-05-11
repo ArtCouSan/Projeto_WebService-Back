@@ -61,20 +61,14 @@ public class TripServiceImpl implements TripService {
         List<Local> locales = new ArrayList<Local>();
 
         Local localTo = new Local();
-        localTo.setAvenue(tripConfirmDTO.getAvenue());
-        localTo.setCep(tripConfirmDTO.getCep());
-        localTo.setNeighborhood(tripConfirmDTO.getNeighborhood());
-        localTo.setStreet(tripConfirmDTO.getStreet());
+        localTo.setAdress(tripConfirmDTO.getAdress());
         localTo.setType(LocalType.FOR);
 
         localTo = repositoryLocal.save(localTo);
         locales.add(localTo);
 
         Local localFor = new Local();
-        localFor.setAvenue("Fiap avenida");
-        localFor.setCep("00000-000");
-        localFor.setNeighborhood("Fiap bairro");
-        localFor.setStreet("Sem rua");
+        localFor.setAdress("Fiap Lins");
         localFor.setType(LocalType.TO);
 
         localFor = repositoryLocal.save(localFor);

@@ -7,9 +7,6 @@ public class TripConfirmDTO {
 
     private Long idUser;
     private Long idVehicle;
-    private String cep;
-    private String street;
-    private String avenue;
-    private String neighborhood;
+    private String adress;
 
 }

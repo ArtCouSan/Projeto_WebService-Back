@@ -21,17 +21,8 @@ public class Local {
     @Column(name = "local_id")
     private Long id;
 
-    @Column(name = "local_cep")
-    private String cep;
-
-    @Column(name = "local_street")
-    private String street;
-
-    @Column(name = "local_avenue")
-    private String avenue;
-
-    @Column(name = "local_neighborhood")
-    private String neighborhood;
+    @Column(name = "local_adress")
+    private String adress;
 
     @Column(name = "local_type")
     @Enumerated(EnumType.STRING)
