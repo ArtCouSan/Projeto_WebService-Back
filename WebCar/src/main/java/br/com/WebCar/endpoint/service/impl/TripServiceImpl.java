@@ -56,7 +56,7 @@ public class TripServiceImpl implements TripService {
     }
 
     @Override
-    public String tripConfirm(TripConfirmDTO tripConfirmDTO) {
+    public TripResponseDTO tripConfirm(TripConfirmDTO tripConfirmDTO) {
 
         List<Local> locales = new ArrayList<Local>();
 
@@ -91,6 +91,9 @@ public class TripServiceImpl implements TripService {
 
         repositoryTrip.save(trip);
 
-        return "Confirmado";
+        TripResponseDTO tripResponseDTO = new TripResponseDTO();
+        tripResponseDTO.setConfirmado(true);
+
+        return tripResponseDTO;
     }
 }

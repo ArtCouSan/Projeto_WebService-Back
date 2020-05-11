@@ -2,6 +2,7 @@ package br.com.WebCar.endpoint.controller;
 
 import br.com.WebCar.endpoint.dto.TripConfirmDTO;
 import br.com.WebCar.endpoint.dto.TripDisponibilityConsultDTO;
+import br.com.WebCar.endpoint.dto.TripResponseDTO;
 import br.com.WebCar.endpoint.dto.VehicleResponseDTO;
 import br.com.WebCar.endpoint.service.TripService;
 import org.springframework.http.HttpStatus;
@@ -27,8 +28,8 @@ public class TripController {
     }
 
     @PostMapping("/confirm")
-    public ResponseEntity<String> tripConfirm(@RequestBody @Valid TripConfirmDTO tripConfirmDTO) {
-        return new ResponseEntity<String>(tripService.tripConfirm(tripConfirmDTO), HttpStatus.OK);
+    public ResponseEntity<TripResponseDTO> tripConfirm(@RequestBody @Valid TripConfirmDTO tripConfirmDTO) {
+        return new ResponseEntity<TripResponseDTO>(tripService.tripConfirm(tripConfirmDTO), HttpStatus.OK);
     }
 
 }
