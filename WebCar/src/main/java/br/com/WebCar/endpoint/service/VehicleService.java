@@ -11,6 +11,7 @@ public interface VehicleService {
 	
 	public List<VehicleResponseDTO> getAllVehicles();
 	public VehicleResponseDTO findVehicleByPlate(String plate);
+	public VehicleResponseDTO findVehicleById(Long id);
 	public VehicleResponseDTO createVehicle(VehicleSaveDTO vehicleDTO);
 	public VehicleResponseDTO alterVehicle(Long id, VehicleAlterDTO vehicleDTO);
 	public VehicleResponseDTO deleteVehicle(Long id);

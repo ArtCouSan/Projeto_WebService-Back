@@ -42,6 +42,12 @@ public class VehicleServiceImpl implements VehicleService {
     }
 
     @Override
+    public VehicleResponseDTO findVehicleById(Long id) {
+        Vehicle vehicle = vehicleExist(id, null);
+        return new VehicleResponseDTO(vehicle);
+    }
+
+    @Override
     public VehicleResponseDTO createVehicle(VehicleSaveDTO vehicleDTO) {
         Vehicle vehicle = vehicleRepository.save(vehicleDTO.parseVehicleEntity());
 

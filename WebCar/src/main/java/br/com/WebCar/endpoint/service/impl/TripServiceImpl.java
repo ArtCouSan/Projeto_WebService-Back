@@ -79,15 +79,9 @@ public class TripServiceImpl implements TripService {
 
         User user = serviceUser.userExist(tripConfirmDTO.getIdUser());
         trip.setUser(user);
-        UserAlterDTO userAlterDTO = new UserAlterDTO();
-        userAlterDTO.setInVehicle(true);
-        serviceUser.alterUser(user.getId(), userAlterDTO);
 
         Vehicle vehicle = serviceVehicle.vehicleExist(tripConfirmDTO.getIdVehicle(), null);
         trip.setVehicle(vehicle);
-        VehicleAlterDTO vehicleAlterDTO = new VehicleAlterDTO();
-        vehicleAlterDTO.setStatus(CarStep.IN_USE);
-        serviceVehicle.alterVehicle(vehicle.getId(), vehicleAlterDTO);
 
         repositoryTrip.save(trip);
 

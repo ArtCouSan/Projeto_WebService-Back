@@ -22,7 +22,7 @@ public class TripController {
         this.tripService = tripService;
     }
 
-    @PostMapping("/disponibility-consult")
+    @PostMapping("/disponibility")
     public ResponseEntity<List<VehicleResponseDTO>> tripDisponibilityConsult(@RequestBody TripDisponibilityConsultDTO disponibilityConsultDTO) {
         return new ResponseEntity<List<VehicleResponseDTO>>(tripService.disponibilityConsult(disponibilityConsultDTO), HttpStatus.OK);
     }
